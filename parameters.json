@@ -1,0 +1,64 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "VNetName": {
+            "value": "vn01"
+        },
+        "RouteTables": {
+            "value": [
+                {
+                    "properties": {
+                        "RouteName": "RT01",
+                        "SubnetName": "sub01",
+                        "disableBgpRoutePropagation": true,
+                        "routes": [
+                            {
+                                "name": "default-outbound-to-firewall",
+                                "properties": {
+                                    "addressPrefix": "0.0.0.0/0",
+                                    "nextHopType": "VirtualAppliance",
+                                    "nextHopIpAddress": "10.0.0.4"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "properties": {
+                        "RouteName": "RT02",
+                        "SubnetName": "sub02",
+                        "disableBgpRoutePropagation": false,
+                        "routes": [
+                            {
+                                "name": "default-outbound-to-firewall",
+                                "properties": {
+                                    "addressPrefix": "0.0.0.0/0",
+                                    "nextHopType": "VirtualAppliance",
+                                    "nextHopIpAddress": "10.0.0.5"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "properties": {
+                        "RouteName": "RT03",
+                        "SubnetName": "sub03",
+                        "disableBgpRoutePropagation": false,
+                        "routes": [
+                            {
+                                "name": "default-outbound-to-firewall",
+                                "properties": {
+                                    "addressPrefix": "0.0.0.0/0",
+                                    "nextHopType": "VirtualAppliance",
+                                    "nextHopIpAddress": "10.0.0.6"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}
